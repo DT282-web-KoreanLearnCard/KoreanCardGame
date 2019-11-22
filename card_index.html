@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>carde game</title>
+</head>
+<body>
+<div>
+    <h2>select the game<br><br></h2>
+    <form method="POST" action="game.php">
+    <div>
+        What Category do you want to play?<br>
+        <input type="radio" name="category" value=1>Animal<br>
+        <input type="radio" name="category" value=2>Fruit<br>
+        <input type="radio" name="category" value=3>Verb<br>
+        <br><br>
+    </div>
+    <div>
+        Please select the pattern.<br>
+        <input type="radio" name="pattern" value=4>4 X 4<br>
+        <input type="radio" name="pattern" value=6>6 X 6<br>
+        You can get 1 point when you play 4 X 4 game<br>
+        You can get 3 points when you play 6 X 6 game<br>
+        <br><br>
+    </div>
+    <button type="submit" name = "selectGame">submit</button>
+    </form>
+</div>
+</body>
+</html>
