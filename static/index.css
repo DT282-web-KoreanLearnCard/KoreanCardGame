@@ -77,3 +77,9 @@ body {
     background-color: #000 !important;
     color: #fff;
 }
+
+.login-form p{
+    margin-top: 2%;
+    color: red;
+    visibility: hidden;
+}
