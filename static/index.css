@@ -15,7 +15,7 @@ body {
     background-color: #000;
     overflow-x: hidden;
     padding-top: 20px;
-    background-image: url('/img/background_1.jpg');
+    background-image: url('./img/background_1.jpg');
 }
 
 
