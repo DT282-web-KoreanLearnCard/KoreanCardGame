@@ -1,0 +1,23 @@
+.bord{
+    position:relative;
+    float:left;
+    vertical-align: center;
+    margin:5%
+
+}
+.card {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    margin: 15px;
+    float: left;
+    vertical-align: center;
+    background: black;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+.main{
+    margin:5%
+}
