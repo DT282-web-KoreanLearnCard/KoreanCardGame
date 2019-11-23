@@ -1,0 +1,18 @@
+.bord{
+    position:relative;
+    float:left;
+
+}
+.card {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    margin: 15px;
+    float: left;
+    vertical-align: center;
+    background: deepskyblue;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
