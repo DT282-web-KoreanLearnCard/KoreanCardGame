@@ -7,17 +7,17 @@ $maxNum = $cardNum * $cardNum;
 $word=array();
 $saveId=array();
 $click=array(0,0);
-$_SESSION['id']='user';
+$id=$_SESSION['id'];
 
 function insert(){
-    global $connect;
+    global $connect,$cardNum,$category,$id;
 
-    if($_SESSION['id']==''){
+    if(!isset($_SESSION['id'])){
         echo "You cannot save the data";
         echo "You should log in to save it";
     }
     else{
-        $sql="insert into gamelog(userid,score,categoryid,time) values('".$_SESSION['id']."',4,1,10)";
+        $sql="insert into gamelog(userid,score,categoryid) values('".$_SESSION['id']."',".$cardNum.",".$category.")";
         if($connect->query($sql)===TRUE) {
             echo $_SESSION['id'] . ", your point and game log saved successfully";
         }
@@ -82,7 +82,7 @@ function call(){
 function makeCard(){
     global $maxNum,$cardNum,$word,$saveIds,$saveId;
     $cnt=0;
-    $arr = random(0,15,16);
+    $arr = random(0,$maxNum-1,$maxNum);
     for($i=0; $i<$cardNum; $i++){
         echo "<div class='bord'>";
         for($j=0;$j<$cardNum;$j++){
@@ -116,6 +116,7 @@ makeCard();
     var indexs = [-1,-1];
     var str="";
     var count =0;
+    var cardNum = <?php echo $cardNum ?>;
 
     var saveIds = <?php echo call() ?>;
 
@@ -152,8 +153,8 @@ makeCard();
                 click[0]='';
                 indexs[0]=-1;
             }
-            if(count==8){
-                alert("Success!<br><?php echo insert() ?>");
+            if(count==(cardNum*cardNum)/2){
+                alert("Success! <?php echo insert() ?>");
 
             }
         }
@@ -161,7 +162,6 @@ makeCard();
     }
 </script>
 
-<div id="k"></div>
 </body>
 <html>
 
