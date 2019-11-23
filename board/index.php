@@ -2,8 +2,33 @@
 <head>
     <meta charset="utf-8"/>
     <title>File list</title>
+<script>
+    function search1(){
+        if(frm1.search.value){
+            frm1.submit();
+        }else{
+            location.href="index.php";
+        }
+    }
+
+</script>
 </head>
 <body>
+<div>
+<form method=GET name=frm1 action='index.php'>
+SEARCH
+            <select name=kind>
+            <option value=subject selected>subject
+            <option value=USERID>writer
+            <option value=memo>memo
+            </select>
+
+            <input type=text size=45 name=search>
+            <input type=button name=byn1 onclick="search1()" value="search">
+            
+        </form>
+               
+ </div>
 <?php
 
 $host = 'localhost';
@@ -18,9 +43,18 @@ $mysqli = new mysqli($host, $user, $pw, $dbName);
         }
 		
 		$sql = "select * from board";
-		$res = $mysqli->query($sql);
-		$num_result = $res->num_rows;
-    ?>
+		
+    
+    if(isset($_GET['search'])){
+
+        $sel=$_GET['kind'];
+        $search=$_GET['search'];
+                
+        $sql="select * from board where ".$sel." like '%".$search."%'";
+}
+    $res = $mysqli->query($sql);
+    $num_result = $res->num_rows;
+?>
 	
 	
 	
