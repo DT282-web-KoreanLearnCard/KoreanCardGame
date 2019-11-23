@@ -1,6 +1,14 @@
 section{
     margin: 10%;
 }
+
+.information{
+    display: block;
+}
+
+.deleteAccount{
+    display: none;
+}
 .img{
     border-radius: 50%;
     padding: 3% 3% 3% 3%;

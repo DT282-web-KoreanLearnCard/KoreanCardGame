@@ -40,6 +40,11 @@
             })
         });
 
+        $(document).on('click', '#delete', function(){
+            $('.information').css('display', 'none');
+            $('.deleteAccount').css('display', 'block');
+        });
+
         $.ajax({
             type: "POST",
             url: "/KoreanLearn/application/model/getPersonalInformation.php",
@@ -52,7 +57,27 @@
                 $('#verb').text("VERB : " + data.verbScore);
                 $('#total').text("TOTAL : " + data.totalScore);
             }
-        })
+        });
+
+
+        function deleteAccount(){
+            $.ajax({
+               type: "POST",
+               dataType: "json",
+               url: "/KoreanLearn/application/model/deleteAccount.php",
+               success: function(response){
+                   if(response.res == 'DELETED'){
+                       location.replace('index.html');
+                   }
+               }
+            });
+        }
+
+        function returnAccount(){
+            $('.deleteAccount').css('display', 'none');
+            $('.information').css('display', 'block');
+        }
+
     </script>
 </head>
 <body>
@@ -62,28 +87,39 @@
             $('#header').load('/KoreanLearn/static/navbar.html');
         })
     </script>
-    <section>
+    <section class="information">
         <div class="card">
-            <div class="img">
-                <img src="/KoreanLearn/static/img/background_2.jpg" alt="profile"/>
+            <div class="up">
+                <div class="img">
+                    <img src="/KoreanLearn/static/img/background_2.jpg" alt="profile"/>
+                </div>
+                <p class="nickname" id="nickname">[NICKNAME]</p>
+                <p class="name" id="name">[ID]</p>
+                <div class="scores" id="scores">
+                    <p class="score" id="animal">ANIMAL : </p>
+                    <p class="score" id="fruit">FRUIT : </p>
+                    <p class="score" id="verb">VERB : </p>
+                    <p class="score" id="total">TOTAL : </p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                </div>
             </div>
-            <p class="nickname" id="nickname">Nickname</p>
-            <p class="name" id="name">ID</p>
-            <div class="scores" id="scores">
-                <p class="score" id="animal">ANIMAL : 90</p>
-                <p class="score" id="fruit">FRUIT : 90</p>
-                <p class="score" id="verb">VERB : 90</p>
-                <p class="score" id="total">TOTAL : 270</p>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-            </div><!--            <a href="#"><i class="fa fa-dribbble"></i></a>-->
-<!--            <a href="#"><i class="fa fa-twitter"></i></a>-->
-<!--            <a href="#"><i class="fa fa-linkedin"></i></a>-->
-<!--            <a href="#"><i class="fa fa-facebook"></i></a>-->
             <p>
                 <button id="edit">Edit</button>
-                <button>Delete</button>
+                <button id="delete">Delete</button>
+            </p>
+        </div>
+    </section>
+    <section class="deleteAccount">
+        <div class="card" style="width: 400px;">
+            <div class="up" style = "padding-top: 3%; padding-bottom: 3%;">
+                <h5>Are you sure to delete your account?</h5>
+                <p>This cannot be returned.</p>
+            </div>
+            <p>
+                <button id="OK" onclick="deleteAccount()">YES</button>
+                <button id="NO" onclick="returnAccount()">NO</button>
             </p>
         </div>
     </section>

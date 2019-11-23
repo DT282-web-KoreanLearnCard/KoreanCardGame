@@ -21,7 +21,7 @@
         echo json_encode(array('res' => 'NickExist'));
 //        echo "Already Exist Nickname";
     }
-    if (($numID == 0) && ($numNick == 0)) {
+    else if (($numID == 0) && ($numNick == 0)) {
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['nickname'] = $_POST['nickname'];
         $_SESSION['password'] = $_POST['password'];
