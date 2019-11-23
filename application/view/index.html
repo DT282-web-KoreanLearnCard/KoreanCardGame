@@ -11,7 +11,7 @@
     <script>
         function checkValid(){
             $.ajax({
-                url: "../controller/index.php",
+                url: "/KoreanLearn/application/controller/index.php",
                 type: "POST",
                 data: {
                     id: $('#id').val(),
@@ -22,6 +22,7 @@
                     if(data.res == 'FAIL'){
                         $('#loginError').css('visibility', 'visible');
                     }else{
+                        //window.location = "game_index.php" --> echo nav , echo select game size
                         window.location = "./tmp.html"
                     }
                 }
