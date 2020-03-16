@@ -1,0 +1,142 @@
+
+/* Montserrat-300 - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/montserrat/Montserrat-Light.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 400;
+    src: url("../fonts/montserrat/Montserrat-Italic.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/montserrat/Montserrat-Medium.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../fonts/montserrat/Montserrat-Bold.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 700;
+    src: url("../fonts/montserrat/Montserrat-BoldItalic.ttf");
+    /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 900;
+    src: url("../fonts/montserrat/montserrat-v12-latin-900.ttf"), url("../fonts/montserrat/montserrat-v12-latin-900.eot") format("embedded-opentype"), url("../fonts/montserrat/montserrat-v12-latin-900.svg") format("woff2"), url("../fonts/montserrat/montserrat-v12-latin-900.woff") format("woff"), url("../fonts/montserrat/montserrat-v12-latin-900.woff2") format("truetype"); }
+
+
+/*https://bootsnipp.com/snippets/7nk08*/
+body {
+    /*font-family: "Lato", sans-serif;*/
+    font-family: 'Montserrat';
+}
+
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-image: url('../img/background_1.jpg');
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%;
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 80%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    /*color: #fff;*/
+    color: navajowhite;
+    background-color: black;
+    opacity: 80%;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.login-form p{
+    margin-top: 2%;
+    color: red;
+    visibility: hidden;
+}
+
+.form-group label{
+    font-weight: bold;
+}
