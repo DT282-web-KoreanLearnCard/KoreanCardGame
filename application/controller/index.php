@@ -1,39 +1,30 @@
 <?php
-//register page
-//include('../model/register.php');
+    session_start();
+    //connect to DB
+    include '../model/dbConnect.php';
+    header("Content-Type: application/json");
+    $id = mysqli_real_escape_string($connect, $_POST['id']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
+    $count = 0;
+    //checking results to see if any account has that username and password
+    $query = "select nickname from user where userid = '$id' and password = '$password'";
+    $count = mysqli_num_rows(mysqli_query($connect, $query));
+    $nickname = mysqli_fetch_assoc(mysqli_query($connect, $query))['nickname'];
+    if ($count == 0) {
+        //if no results found
+        echo json_encode(array('res'=>'FAIL'));
+//        echo "no account found";
 
-//connect to DB
-$connect = mysqli_connect("localhost","klearning","webproject","klearning", 3306);
-if(!$connect) die('Not connected : ' . mysqli_error());
-
-//get form from index.html
-$id = $_POST['id'];
-$password = $_POST['password'];
-
-//check login button or register or guest
-//login
-if(isset($_POST['login'])){
-    $sql = "select nickname from user where USERID = "+$id+" and PASSWORD = "+$password;
-    $result = mysqli_query($conn,$sql);
-    
-    if((int)(mysqli_num_rows($result)) > 0){
-        //call the game page
-        while($row = mysqli_fetch_assoc()){
-            echo " " . $row["nickname"]. "Welcome". "<br>";
-        }
-        echo "SUCCESS!";
-    }
-    else{
-        //login denied
-        echo "DENIED";
-    }
+    } else {
+        //set username to session variable
+        $_SESSION['id'] = $_POST['id'];
+        $_SESSION['password'] = $_POST['password'];
+        $_SESSION['nickname'] = $nickname;
+//        echo 'OK';
+        echo json_encode(array('res'=>'OK'));
+//        echo "welcome  " . $id;
+        //direct user to home page while being logged in
+//        header("Location:../view/card_index.php");
 }
-
-//register
-
-
-//guest
-
-    
 ?>
 
