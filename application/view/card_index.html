@@ -2,29 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>card game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/nav.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/myPage.css">
+    <link rel="stylesheet" href="../../static/css/signup.css">
 </head>
 <body>
-<div>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner" id="header"></header>
+<script>
+    $(function(){
+        $('#header').load('../../static/navbar.html');
+    })
+</script>
+<div class ="main">
+    <section class="signup">
+<div class="signup-content">
     <h2>select the game<br><br></h2>
     <form method="POST" action="../controller/game.php">
-    <div>
+    <div class="form-group">
         What Category do you want to play?<br>
         <input type="radio" name="category" value=1>Animal<br>
         <input type="radio" name="category" value=2>Fruit<br>
         <input type="radio" name="category" value=3>Verb<br>
         <br><br>
     </div>
-    <div>
+    <div class="form-group">
         Please select the pattern.<br>
         <input type="radio" name="pattern" value=4>4 X 4<br>
         <input type="radio" name="pattern" value=6>6 X 6<br>
-        You can get 1 point when you play 4 X 4 game<br>
-        You can get 3 points when you play 6 X 6 game<br>
+        You can get 4 points when you play 4 X 4 game<br>
+        You can get 6 points when you play 6 X 6 game<br>
         <br><br>
     </div>
-    <button type="submit" name = "selectGame">submit</button>
+    <button type="submit" name = "selectGame">Select Game</button>
     </form>
 </div>
-</body>
+    </section>
+</div>
+<!-- JS -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="../../static/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

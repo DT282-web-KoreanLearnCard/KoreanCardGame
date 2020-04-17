@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="../../static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../../static/css/signup.css">
+    <script>
+        function checkValid(){
+            $.ajax({
+                url: "../model/register.php",
+                type: "POST",
+                data: {
+                    id: $('#id').val(),
+                    password: $('#password').val(),
+                    nickname: $('#nickname').val()
+                },
+                dataType: "json",
+                success: function(data){
+                    if(data.ires == "IdExist"){
+                        $('#IDCheck').css('visibility', 'visible');
+                        $('#NickCheck').css('visibility', 'hidden');
+                    }
+                    if(data.res == "NickExist"){
+                        $('#NickCheck').css('visibility', 'visible');
+                        $('#IDCheck').css('visibility', 'hidden');
+                    }
+                    if(data.res == "Insert"){
+                        $('#IDCheck').css('visibility', 'hidden');
+                        $('#NickCheck').css('visibility', 'hidden');
+                        location.href = 'card_index.html';
+                        //gmae_index.php --> echo nav(home(game_selection.php), MyPage, Board) , game selection page(game(4x4, 6x6))
+                    }
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="id" id="id" placeholder="ID"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="nickname" id="nickname" placeholder="Nickname"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+
+                        <div>
+                            <p style="color: red; visibility: hidden" id="IDCheck">ID Already Exists</p>
+                        </div>
+
+                        <div>
+                            <p style="color: red; visibility: hidden " id="NickCheck">Nickname Already Exists</p>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" name="submit" id="submit" class="form-submit" value="Sign up" onclick="checkValid()"/>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Have already an account ? <a href="index.html" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../../../static/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+
+<!--Remember that this template is licensed under CC BY 3.0.
+
+Meaning you are not allowed to remove footer credits for that you must purchase a License.-->

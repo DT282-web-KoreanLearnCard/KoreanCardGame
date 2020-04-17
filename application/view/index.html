@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <title>LOGIN</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="../../static/index.css" rel="stylesheet" id="indexcss">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="../../static/css/index.css" rel="stylesheet" id="indexcss">
+<!--    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function checkValid(){
+            $.ajax({
+                url: "../controller/index.php",
+                type: "POST",
+                data: {
+                    id: $('#id').val(),
+                    password: $('#password').val()
+                },
+                dataType: "json",
+                success: function(data){
+                    if(data.res == 'FAIL'){
+                        $('#loginError').css('visibility', 'visible');
+                    }else{
+                        //window.location = "game_index.php" --> echo nav , echo select game size
+                        window.location = "./card_index.html"
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <!--https://bootsnipp.com/snippets/7nk08-->
@@ -19,18 +41,19 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form method="POST" action="../controller/index.php">
+            <form method="POST"><!--action="../controller/index.php"-->
                 <div class="form-group">
                     <label>User Name</label>
-                    <input type="text" class="form-control" placeholder="User Name" name="id">
+                    <input type="text" class="form-control" placeholder="User Name" name="id" id="id">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
                 </div>
-                <button type="submit" class="btn btn-black" name="login">Login</button>
-                <button class="btn btn-dark" name="register>Register</button>
-                <button class="btn btn-secondary" name="guest">Guest</button>
+                <button type="button" class="btn btn-black" name="login" onclick="checkValid()">Login</button>
+                <button type="button" class="btn btn-dark" name="register" onclick="location.href='registration.html'">Register</button>
+                <button type="button" class="btn btn-secondary" name="guest" onclick="location.href='card_index.html'">Guest</button>
+                <p id="loginError">Invalid Username or Password</p>
             </form>
         </div>
     </div>
